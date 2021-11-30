@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <title>Display Page</title>
 
-    <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      /* 隐藏body窗口区域滚动条 */
-    }
-    </style>
-    <script src="http://www.yanhuangxueyuan.com/versions/threejsR92/build/three.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="js/filters.js"></script>
+    <!--    Element UI    -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
 </head>
 <body>
     <h2>滤镜算法Demo</h2>
     <h3>原图</h3>
     <img src="img/EVA_01.jpg" width="512" height="288" id="pic"/>
     <h3>滤镜算法处理效果图</h3>
+    <button onclick="turnGrey()">灰色</button>
+    <button onclick="turnMonochrome()">黑白</button>
+    <button onclick="turnRGBReverse()">反色</button>
+
     <canvas width="1000" height="1000" id="myCanvas"></canvas>
 
-    <script>
+    <script type="text/javascript">
         var c=document.getElementById("myCanvas");
         var ctx=c.getContext("2d");
         var img=document.getElementById("pic");
@@ -28,13 +30,12 @@
         //获取canvas中图像的data属性（每个像素点的rgba）
         var imgData=ctx.getImageData(0,0,512,288);
         //滤镜算法处理数据
-        for(var i = 0; i < imgData.data.length; i += 4) {
-            var grey = (imgData.data[i] + imgData.data[i+1] + imgData.data[i+2]) / 3;
-            imgData.data[i] = imgData.data[i+1] = imgData.data[i+2] = grey;
-            imgData.data[i+3]=255;
-        }
+        function turnGrey() { ctx.putImageData(grey(imgData),0,0); }
+
+
         //处理后的数据写回canvas
         ctx.putImageData(imgData,0,0);
+
     </script>
 </body>
 </html>
