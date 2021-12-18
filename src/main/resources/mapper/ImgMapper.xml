@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.table.webip.mapper.ImgMapper">
+
+
+    <!--ImgInfo-->
+    <select id="queryAllImg" resultType="ImgInfo">
+        select * from "TJM"."IMG"
+    </select>
+
+    <insert id="addImg" parameterType="ImgInfo">
+        INSERT INTO "TJM"."IMG" ("IMG_NAME", "PATH") VALUES (#{img_name}, #{path})
+    </insert>
+
+    <delete id="deleteImg" parameterType="String">
+        DELETE FROM "TJM"."IMG" WHERE "IMG_NAME" = #{img_name}
+    </delete>
+</mapper>
