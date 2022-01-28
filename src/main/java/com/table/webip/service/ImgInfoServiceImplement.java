@@ -2,6 +2,7 @@ package com.table.webip.service;
 
 import com.table.webip.mapper.ImgMapper;
 import com.table.webip.pojo.ImgInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,8 @@ public class ImgInfoServiceImplement implements ImgInfoService{
 
     @Override
     public List<ImgInfo> queryAllImg(){ return imgMapper.queryAllImg(); }
+    @Override
+    public ImgInfo queryByName(String img_name) { return imgMapper.queryByName(img_name); }
     @Override
     public int addImg(ImgInfo imgInfo){ return imgMapper.addImg(imgInfo); }
     @Override

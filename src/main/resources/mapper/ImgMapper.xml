@@ -10,6 +10,10 @@
         select * from "TJM"."IMG"
     </select>
 
+    <select id="queryByName" resultType="ImgInfo">
+        select * from "TJM"."IMG" WHERE "IMG_NAME" = #{img_name}
+    </select>
+
     <insert id="addImg" parameterType="ImgInfo">
         INSERT INTO "TJM"."IMG" ("IMG_NAME", "PATH") VALUES (#{img_name}, #{path})
     </insert>

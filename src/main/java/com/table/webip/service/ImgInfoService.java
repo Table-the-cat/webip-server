@@ -11,6 +11,8 @@ public interface ImgInfoService {
 
     List<ImgInfo> queryAllImg();
 
+    ImgInfo queryByName(@Param("img_name") String img_name);
+
     int addImg(ImgInfo imgInfo);
 
     int deleteImg(@Param("img_name") String img_name);
