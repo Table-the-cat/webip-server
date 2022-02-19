@@ -7,7 +7,7 @@
 
     <!--ImgInfo-->
     <select id="queryAllImg" resultType="ImgInfo">
-        select * from "TJM"."IMG"
+        select * from "TJM"."IMG" WHERE VISIBLE = 'true'
     </select>
 
     <select id="queryByName" resultType="ImgInfo">
@@ -15,10 +15,12 @@
     </select>
 
     <insert id="addImg" parameterType="ImgInfo">
-        INSERT INTO "TJM"."IMG" ("IMG_NAME", "PATH") VALUES (#{img_name}, #{path})
+        INSERT INTO "TJM"."IMG" ("IMG_NAME", "PATH") VALUES (#{img_name}, #{path}, #{visible})
     </insert>
 
-    <delete id="deleteImg" parameterType="String">
-        DELETE FROM "TJM"."IMG" WHERE "IMG_NAME" = #{img_name}
-    </delete>
+    <update id="deleteImg" parameterType="String">
+        UPDATE "TJM"."IMG"
+        SET VISIBLE = 'false'
+        WHERE "IMG_NAME" = #{img_name}
+    </update>
 </mapper>

@@ -3,6 +3,7 @@ package com.table.webip.pojo;
 public class ImgInfo {
     private String img_name;
     private String path;
+    private String visible;
 
     public String getImg_name() {
         return img_name;
@@ -18,5 +19,11 @@ public class ImgInfo {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public ImgInfo(String img_name, String path) {
+        this.img_name = img_name;
+        this.path = path;
+        this.visible = "true";
     }
 }
